@@ -1,5 +1,7 @@
+// login.dart
 import 'package:flutter/material.dart';
 import 'bottom_navigation.dart';
+import 'signup.dart'; // Add this import
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -44,7 +46,13 @@ class LoginPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Go to sign up page.
+                  // Navigate to SignUpPage when "Sign Up" is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpPage(),
+                    ),
+                  );
                 },
                 child: const SizedBox(
                   width: double.infinity,
