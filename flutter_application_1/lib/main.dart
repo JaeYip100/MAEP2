@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/firebase_options.dart';
 
 // Import the widgets/pages for Tutee, Tutor, and Admin
 /*import 'module_page_widget.dart';
@@ -11,7 +13,11 @@ import 'tutors_page.dart';*/
 import 'login.dart';
 //import 'signup.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure widgets are bound before Firebase initializes
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, // Use Firebase options
+  );
   runApp(const MyApp());
 }
 
