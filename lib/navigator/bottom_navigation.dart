@@ -19,9 +19,9 @@ class BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
 
   List<Widget> navigationPagesForTutee = [
-    const TestModuleCopy(), //Module page
-    const TutorRatingSystemWidgetCopy(), //Tutor rating system page
-    const SavedTutorCopy(), //Saved tutor information page
+    const ModulePage(), //Module page
+    const FindTutorPage(), //Tutor rating system page
+    const SavedTutorPage(), //Saved tutor information page
     // const ProfileScreen(), //Profile page
   ];
 

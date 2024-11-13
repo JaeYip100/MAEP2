@@ -159,7 +159,7 @@ class _FindTutorPageBodyState extends State<FindTutorPageBody> {
                           final newAverageRating = await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TutorReviewCopyBody(
+                              builder: (context) => TutorReviewPage(
                                 tutorID: listToShow[index].tutorID,
                                 name: listToShow[index].name,
                                 description: listToShow[index].description,

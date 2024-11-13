@@ -138,8 +138,8 @@ class TutorReviewPageState extends State<TutorReviewPage> {
   }
 
   //Calculate the updated average rating.
-  double calculateAverageRating() {
-    double totalRatings = (widget.averageRating * numberOfReviews) + rating;
+  double calculateAverageRating(double rating, double currentAverageRating, int numberOfReviews) {
+    double totalRatings = (currentAverageRating * numberOfReviews) + rating;
     numberOfReviews = numberOfReviews + 1;
     double averageRating = totalRatings / numberOfReviews;
     averageRating = (averageRating * 100).round() / 100;
@@ -158,7 +158,7 @@ class TutorReviewPageState extends State<TutorReviewPage> {
       if (documentSnapshot.exists)
       {
         final docToUpdate = tutorCollection.doc(widget.tutorID);
-        avgRating =  calculateAverageRating();
+        avgRating =  calculateAverageRating(rating, widget.averageRating, numberOfReviews);
         docToUpdate.update({'averageRating': avgRating});
 
         //Add a new document with the new review details.
@@ -288,7 +288,7 @@ class TutorReviewPageState extends State<TutorReviewPage> {
           padding: const EdgeInsets.all(20),
           child: ElevatedButton(
             onPressed: () {
-              sendReview(context, tuteeName, review, rating); //Replace name with tutee's name.
+              sendReview(context, "bob", review, rating); //Replace name with tutee's name.
             },
             child: const Text('Send'),
           ),
