@@ -10,13 +10,13 @@ class TuteeRepository {
     List<String> tuteeNames = [];
     // CollectionReference tuteeCollection = FirebaseFirestore.instance.collection('Tutee');
     CollectionReference tuteeCollection = FirebaseFirestore.instance.collection('Users');
-    QuerySnapshot querySnapshot = await tuteeCollection.where('tuteeID', whereIn: tuteeIDs).get();
+    QuerySnapshot querySnapshot = await tuteeCollection.where('uid', whereIn: tuteeIDs).get();
 
     if (querySnapshot.docs.isNotEmpty)
     {
       for (var document in querySnapshot.docs)
       {
-        tuteeIdToNameMap[document['tuteeID']] = document['name'];
+        tuteeIdToNameMap[document['uid']] = document['name'];
         tuteeNames.add(tutee.nameFromFirestore(document));
       }
     }

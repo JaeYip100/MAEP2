@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/find_tutor_page.dart';
 import 'login.dart'; // Import LoginPage
 import 'study_material_page.dart'; 
-import 'tutor_rating_page.dart'; 
+ 
 
 class TutorHomePage extends StatelessWidget {
   const TutorHomePage({super.key});
@@ -32,7 +33,7 @@ class TutorHomePage extends StatelessWidget {
                 // Navigate to TutorRatingPage
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TutorRatingPage()),
+                  MaterialPageRoute(builder: (context) =>  FindTutorPage()),
                 );
               },
               child: const Text('View Ratings'),

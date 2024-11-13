@@ -11,7 +11,7 @@ class SavedTutor{
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return SavedTutor(
-      tutorID: data['tutorID'] ?? '',
+      tutorID: data['uid'] ?? '',
     );
   }
 }

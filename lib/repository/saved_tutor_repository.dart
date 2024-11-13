@@ -1,20 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/data_model/saved_tutor_data_model.dart';
 
 
 class SavedTutorRepository {
-  final String tuteeID = "1";
+  
   
   void add(String tutorID) async
   {
     //Update the firestore.
     try {
       CollectionReference tuteeCollection = FirebaseFirestore.instance.collection("Users");
-      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(tuteeID).get();
+      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").get();
       
       if (documentSnapshot.exists)
       {
-        CollectionReference savedTutorCollection = tuteeCollection.doc(tuteeID).collection('savedTutor');
+        CollectionReference savedTutorCollection = tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").collection('savedTutor');
         await savedTutorCollection.add({"tutorID": tutorID});
       }
     } catch (e) {
@@ -40,11 +41,11 @@ class SavedTutorRepository {
   {
     try {
       CollectionReference tuteeCollection = FirebaseFirestore.instance.collection("Users");
-      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(tuteeID).get();
+      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").get();
       
       if (documentSnapshot.exists)
       {
-        CollectionReference savedTutorCollection = tuteeCollection.doc(tuteeID).collection('savedTutor');
+        CollectionReference savedTutorCollection = tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").collection('savedTutor');
         QuerySnapshot querySnapshot = await savedTutorCollection.where("tutorID", isEqualTo: tutorID).get();
       
         if (querySnapshot.docs.isNotEmpty)
@@ -87,11 +88,11 @@ class SavedTutorRepository {
     //Get tutorID and tuteeID from saved tutor collection.
     try {
       CollectionReference tuteeCollection = FirebaseFirestore.instance.collection("Users");
-      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(tuteeID).get();
+      DocumentSnapshot documentSnapshot = await tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").get();
       
       if (documentSnapshot.exists)
       {
-        CollectionReference savedTutorCollection = tuteeCollection.doc(tuteeID).collection('savedTutor');
+        CollectionReference savedTutorCollection = tuteeCollection.doc(FirebaseAuth.instance.currentUser?.uid ?? "").collection('savedTutor');
         QuerySnapshot querySnapshot = await savedTutorCollection.get();
 
         if (querySnapshot.docs.isNotEmpty)

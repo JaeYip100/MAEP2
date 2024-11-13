@@ -73,12 +73,12 @@ class LoginPageBodyState extends State<LoginPageBody> {
       width: 100,
       height: 100,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 2),
+        border: Border.all(color: Colors.black, width: 2),
         shape: BoxShape.circle,
       ),
       child: const Icon(
         Icons.person,
-        color: Colors.white,
+        color: Colors.black,
         size: 50,
       ),
     );

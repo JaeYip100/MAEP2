@@ -17,25 +17,10 @@ class Tutor{
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return Tutor(
-      tutorID: data['tutorID'] ?? '',
+      tutorID: data['uid'] ?? '',
       name: data['name'] ?? '',
       description: data['description'] ?? '',
       averageRating: data['averageRating'] ?? 0.0,
     );
-    // return Tutor(
-    //   tutorID: data['uid'] ?? '',
-    //   name: data['name'] ?? '',
-    //   description: data['description'] ?? '',
-    //   averageRating: data['averageRating'] ?? 0.0,
-    // );
   }
-
-  // Map<String, dynamic> toJson() {
-  //   return {
-  //     'tutorID' : tutorID,
-  //     'name': name,
-  //     'description': description,
-  //     'averageRating': averageRating,
-  //   };
-  // }
 }

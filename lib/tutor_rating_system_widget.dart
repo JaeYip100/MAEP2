@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'custom_alert_dialog.dart';
@@ -41,7 +42,7 @@ class TutorReviewPage extends StatefulWidget {
 
 class TutorReviewPageState extends State<TutorReviewPage> {
   TextEditingController textController = TextEditingController();
-  String tuteeID = "1";
+  
   List<ReviewRating> reviews = [];
   List<CustomList> listToShow = [];
   double rating = 0.0;
@@ -164,7 +165,7 @@ class TutorReviewPageState extends State<TutorReviewPage> {
         //Add a new document with the new review details.
         CollectionReference savedTutorCollection = docToUpdate.collection("ReviewRating");
         await savedTutorCollection.add({
-          "tuteeID": tuteeID,
+          "tuteeID": FirebaseAuth.instance.currentUser?.uid ?? "",
           "review": review,
           "rating": rating,
           "dateTime": timestamp
@@ -210,7 +211,7 @@ class TutorReviewPageState extends State<TutorReviewPage> {
   void initState() {
     try {
       loadList();
-      newAverageRating = widget.averageRating;
+      
     } catch (e) {
       CustomAlertDialog().showAlertMessage(
         context,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/module_page_widgetb_page.dart';
 // Import StudyMaterialPage
 
 import 'data_model/module_data_model.dart';
@@ -141,10 +142,10 @@ class _ModulePageBodyState extends State<ModulePageBody> {
                       message: 'Click to go to material page',
                       child: IconButton(
                         onPressed: (){
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (_) => /*Material Page Screen*/),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => ModulePageWidget()),
+                          );
                         }, 
                         icon: const Icon(Icons.arrow_forward),
                       ),
