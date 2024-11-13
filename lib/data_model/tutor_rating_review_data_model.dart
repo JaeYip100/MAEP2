@@ -22,19 +22,10 @@ class ReviewRating{
     String formattedDateTime = DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
 
     return ReviewRating(
-      tuteeID: data['tuteeID'] ?? '',
+      tuteeID: data['uid'] ?? '',
       review: data['review'] ?? '',
       rating: data['rating'] ?? '',
       datetime: formattedDateTime,
     );
   }
-
-  // Map<String, dynamic> toJson() {
-  //   return {
-  //     'tuteeID': tuteeID,
-  //     'review': review,
-  //     'rating': rating,
-  //     'datetime': datetime,
-  //   };
-  // }
 }

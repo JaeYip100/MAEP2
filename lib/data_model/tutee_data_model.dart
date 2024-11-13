@@ -15,15 +15,10 @@ class Tutee{
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return Tutee(
-      tuteeID: data['tutorID'] ?? '',
+      tuteeID: data['uid'] ?? '',
       name: data['name'] ?? '',
       description: data['description'] ?? '',
     );
-    // return Tutee(
-    //   tuteeID: data['uid'] ?? '',
-    //   name: data['name'] ?? '',
-    //   description: data['description'] ?? '',
-    // );
   }
 
   String nameFromFirestore(DocumentSnapshot doc)
@@ -32,12 +27,4 @@ class Tutee{
 
     return data['name'] ?? '';
   }
-
-  // Map<String, dynamic> toJson() {
-  //   return {
-  //     'uid' : tuteeID,
-  //     'name': name,
-  //     'description': description,
-  //   };
-  // }
 }

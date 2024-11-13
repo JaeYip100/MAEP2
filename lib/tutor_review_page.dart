@@ -53,10 +53,9 @@ class TutorReviewPageState extends State<TutorReviewPage> {
     setState(() {
       listIsLoading = true;
     });
-    List<String> tuteeIDs = [];
+    List<String> tuteeIDs = []; //Get all tuteeIDs who submitted reviews
     try {
-      reviews =
-          await ReviewRepository().getReviewRatingforATutor(widget.tutorID);
+      reviews = await ReviewRepository().getReviewRatingforATutor(widget.tutorID);
       for (var review in reviews) {
         tuteeIDs.add(review.tuteeID);
       }
@@ -77,10 +76,11 @@ class TutorReviewPageState extends State<TutorReviewPage> {
         listIsLoading = false;
       });
       if (!mounted) return;
+      
       CustomAlertDialog().showAlertMessage(
         context,
         title: "Connection to firestore failed",
-        body: "Fail to retrieve reviews. Please try again.",
+        body: e.toString(),
       );
     }
   }
@@ -288,7 +288,7 @@ class TutorReviewPageState extends State<TutorReviewPage> {
           padding: const EdgeInsets.all(20),
           child: ElevatedButton(
             onPressed: () {
-              sendReview(context, "bob", review, rating); //Replace name with tutee's name.
+              sendReview(context, tuteeName, review, rating); //Replace name with tutee's name.
             },
             child: const Text('Send'),
           ),
